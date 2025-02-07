@@ -1,5 +1,6 @@
 import web
-render = web.template.render("/views/personas/", base = "master")
+render = web.template.render("/views/personas/", base = "master") # Configuración de la ubicación de la vista, el ../
+
 
 class ListaPersonas:
     def GET(self):
