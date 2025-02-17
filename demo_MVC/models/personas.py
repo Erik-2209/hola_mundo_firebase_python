@@ -11,7 +11,6 @@ firebase = pyrebase.initialize_app(config)
 db = firebase.database()
 
 class Personas:
-
     def __init__(self):
         pass
 
@@ -30,6 +29,7 @@ class Personas:
                 "message": "Error en el servidor",
                 "personas": {}
             }
-            return response  
-#persona = Personas()
-#print(f"{persona.lista_personas()}")
+            return response
+
+persona = Personas()
+print(f"{persona.lista_personas()}")

@@ -1,4 +1,22 @@
-<h1>Lista de Personas</h1> 
+$def with (datos)
+
+<h1>Lista de Personas</h1>
 <a href="/insertar_personas">
-    <button>Insertar personas</button>
+    <button class="btn btn-primary">Insertar personas</button>
 </a>
+
+<table class="table table-striped mt-3 table-bordered">
+    <thead class="table-primary">
+        <tr>
+            <th>Id</th>
+            <th>Nombre</th>
+        </tr>
+    </thead>
+    <tbody>
+        $for key, persona in datos.items():
+            <tr>
+                <td>${key}</td>
+                <td>${persona['nombre']}</td>
+            </tr>
+    </tbody>
+</table>
