@@ -1,2 +1,0 @@
-from controllers.personas.lista_personas import ListaPersonas as ListaPersonas
-from controllers.personas.insertar_personas import InsertarPersonas as InsertarPersonas
