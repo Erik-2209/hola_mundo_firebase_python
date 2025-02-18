@@ -16,7 +16,7 @@ app = app.wsgifunc()
 class Favicon:
     def GET(self):
         web.header('Content-Type', 'image/x-icon')
-        return open('demo_MVC/favicon.ico', 'rb').read()
+        return open('static/favicon.ico', 'rb').read()
 
 if __name__ == "__main__":
     try:
