@@ -1,22 +1,38 @@
 $def with (datos)
 
-<h1>Lista de Personas</h1>
-<a href="/insertar_personas">
-    <button class="btn btn-primary">Insertar personas</button>
-</a>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Personas</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+</head>
+<body>
+    <h1>Lista de Personas</h1>
+    <a href="/insertar_personas">
+        <button class="btn btn-primary">Insertar personas</button>
+    </a>
 
-<table class="table table-striped mt-3 table-bordered">
-    <thead class="table-primary">
-        <tr>
-            <th>Id</th>
-            <th>Nombre</th>
-        </tr>
-    </thead>
-    <tbody>
-        $for key, persona in datos.items():
+    <table class="table table-striped mt-3 table-bordered">
+        <thead class="table-primary">
             <tr>
-                <td>${key}</td>
-                <td>${persona['nombre']}</td>
+                <th>Id</th>
+                <th>Nombre</th>
+                <th>Acciones</th>
             </tr>
-    </tbody>
-</table>
+        </thead>
+        <tbody>
+            $for key, persona in datos.items():
+                <tr>
+                    <td><a href="/detalle_persona/${key}">${key}</a></td>
+                    <td>${persona['nombre']}</td>
+                    <td>
+                        <a href="/editar_persona/${key}" class="btn btn-warning btn-sm">Editar</a>
+                        <a href="/borrar_persona/${key}" class="btn btn-danger btn-sm">Borrar</a>
+                    </td>
+                </tr>
+        </tbody>
+    </table>
+</body>
+</html>

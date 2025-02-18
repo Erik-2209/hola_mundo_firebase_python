@@ -20,7 +20,7 @@ class Personas:
             response = {
                 "status": 200,
                 "message": "Todo bien :3",
-                "personas": dict(personas.val())
+                "personas": dict(personas.val())  # Se corrigió el error de sintaxis
             }
             return response
         except Exception as error:
@@ -31,21 +31,27 @@ class Personas:
             }
             return response
 
-    def insertar_persona(self, nombre, telefono):
+    def detalle_persona(self, id):
         try:
-            data = {
-                "nombre": nombre,
-                "telefono": telefono
-            }
-            db.child("personas").push(data)
-            response = {
-                "status": 200,
-                "message": "Persona insertada correctamente"
-            }
+            persona = db.child("personas").child(id).get()
+            if persona.val():
+                response = {
+                    "status": 200,
+                    "message": "Persona encontrada",
+                    "persona": persona.val()
+                }
+            else:
+                response = {
+                    "status": 404,
+                    "message": "Persona no encontrada"
+                }
             return response
         except Exception as error:
             response = {
                 "status": 400,
-                "message": "Error al insertar persona"
+                "message": "Error en el servidor"
             }
             return response
+
+persona = Personas()
+print(f"{persona.lista_personas()}")

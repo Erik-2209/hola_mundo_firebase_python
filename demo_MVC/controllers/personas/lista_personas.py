@@ -1,7 +1,6 @@
 import web
 from models.personas import Personas
 
-# Asegúrate de que la ruta de "views/personas" es la correcta
 render = web.template.render("views/personas", base="../master")
 
 class ListaPersonas:

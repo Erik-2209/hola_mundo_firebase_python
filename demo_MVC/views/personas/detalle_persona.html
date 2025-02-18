@@ -1,0 +1,30 @@
+$def with (persona)
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalle de Persona</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+</head>
+<body>
+    <h1>Detalle de Persona</h1>
+    <table class="table table-striped mt-3 table-bordered">
+        <thead class="table-primary">
+            <tr>
+                <th>Atributo</th>
+                <th>Valor</th>
+            </tr>
+        </thead>
+        <tbody>
+            $for key, value in persona.items():
+                <tr>
+                    <td>${key}</td>
+                    <td>${value}</td>
+                </tr>
+        </tbody>
+    </table>
+    <a href="/lista_personas" class="btn btn-primary">Volver a la lista</a>
+</body>
+</html>
