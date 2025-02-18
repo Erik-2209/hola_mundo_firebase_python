@@ -20,7 +20,7 @@ class Personas:
             response = {
                 "status": 200,
                 "message": "Todo bien :3",
-                "personas": dict(personas.val())  # Se corrigió el error de sintaxis
+                "personas": dict(personas.val())
             }
             return response
         except Exception as error:
@@ -31,5 +31,21 @@ class Personas:
             }
             return response
 
-persona = Personas()
-print(f"{persona.lista_personas()}")
+    def insertar_persona(self, nombre, telefono):
+        try:
+            data = {
+                "nombre": nombre,
+                "telefono": telefono
+            }
+            db.child("personas").push(data)
+            response = {
+                "status": 200,
+                "message": "Persona insertada correctamente"
+            }
+            return response
+        except Exception as error:
+            response = {
+                "status": 400,
+                "message": "Error al insertar persona"
+            }
+            return response
