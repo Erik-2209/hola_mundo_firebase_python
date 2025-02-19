@@ -4,10 +4,14 @@ render = web.template.render('views/', base="master")
 
 class Index:
     def GET(self):
-        try: 
+        try:
             return render.index()
         except Exception as error:
             message = {
-                "error": error.args[0] }
+                "error": error.args[0]
+            }
             print(f"ERROR: {message}")
-            return message
+            return web.json.dumps({
+                "status": 500,
+                "message": "Error en el servidor"
+            })

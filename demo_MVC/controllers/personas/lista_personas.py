@@ -12,7 +12,13 @@ class ListaPersonas:
                 datos = response["personas"]
                 return render.lista_personas(datos)  # Pasa los datos a la vista
             else:
-                return "Error en la obtención de datos"
+                return web.json.dumps({
+                    "status": 500,
+                    "message": "Error en la obtención de datos"
+                })
         except Exception as error:
             print(f"ERROR controllers.personas.lista_personas: {error.args[0]}")
-            return "Error en el servidor"
+            return web.json.dumps({
+                "status": 500,
+                "message": "Error en el servidor"
+            })

@@ -15,10 +15,22 @@ class InsertarPersonas:
 
             persona = Personas()
             response = persona.insertar_persona(nombre, telefono)
-            return response
+            if response["status"] == 200:
+                return web.json.dumps({
+                    "status": 200,
+                    "message": "Persona insertada correctamente"
+                })
+            else:
+                return web.json.dumps({
+                    "status": 500,
+                    "message": "Error al insertar la persona"
+                })
         except Exception as error:
             message = {
                 "error": error.args[0]
             }
             print(f"ERROR: {message}")
-            return message
+            return web.json.dumps({
+                "status": 500,
+                "message": "Error en el servidor"
+            })

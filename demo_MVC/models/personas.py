@@ -30,6 +30,26 @@ class Personas:
                 "personas": {}
             }
             return response
+    
+    def insertar_persona(self, nombre, telefono):
+        try:
+            data = {
+                "nombre": nombre,
+                "telefono": telefono
+            }
+            db.child("personas").push(data)
+            response = {
+                "status": 200,
+                "message": "Persona insertada correctamente"
+            }
+            return response
+        except Exception as error:
+            response = {
+                "status": 400,
+                "message": "Error al insertar la persona",
+                "error": str(error)
+            }
+            return response
 
     def detalle_persona(self, id):
         try:

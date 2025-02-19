@@ -12,8 +12,19 @@ class DetallePersona:
             if response["status"] == 200:
                 persona = response["persona"]
                 return render.detalle_persona(persona)  # Pasa los datos a la vista
+            elif response["status"] == 404:
+                return web.json.dumps({
+                    "status": 404,
+                    "message": "Persona no encontrada"
+                })
             else:
-                return "Error en la obtención de datos"
+                return web.json.dumps({
+                    "status": 500,
+                    "message": "Error en la obtención de datos"
+                })
         except Exception as error:
             print(f"ERROR controllers.personas.detalle_persona: {error.args[0]}")
-            return "Error en el servidor"
+            return web.json.dumps({
+                "status": 500,
+                "message": "Error en el servidor"
+            })
