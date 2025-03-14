@@ -1,34 +1,5 @@
 $def with (persona)
-
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Detalle de Persona</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
-</head>
-<body>
-<div class="container">
-    <h1>Detalle de Persona</h1>
-    <table class="table table-striped mt-3 table-bordered">
-        <thead class="table-primary">
-            <tr>
-                <th>Atributo</th>
-                <th>Valor</th>
-            </tr>
-        </thead>
-        <tbody>
-            $for key, value in persona.items():
-                <tr>
-                    <td>${key}</td>
-                    <td>${value}</td>
-                </tr>
-        </tbody>
-    </table>
-    <a href="/lista_personas" class="btn btn-primary">Volver a la lista</a>
-</div>
-
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-</body>
-</html>
+<h1>Detalles de Persona</h1>
+<p><strong>Nombre:</strong> $persona.persona.nombre</p>
+<p><strong>Teléfono:</strong> $persona.persona.telefono</p>
+<a href="/lista_personas" class="btn btn-secondary">Volver</a>

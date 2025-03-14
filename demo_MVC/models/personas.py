@@ -81,16 +81,17 @@ class Personas:
             }
             persona_ref = db.child("personas").child(id)
             
-            # Verifica si la persona existe antes de actualizar
             if not persona_ref.get().val():
                 return {"status": 404, "message": "Persona no encontrada"}
 
-            persona_ref.update(data)  # Actualiza la información
-            
+            persona_ref.update(data)
             return {"status": 200, "message": "Persona actualizada correctamente"}
         except Exception as error:
             return {"status": 400, "message": "Error al actualizar la persona", "error": str(error)}
 
-
-persona = Personas()
-print(f"{persona.lista_personas()}")
+    def borrar_persona(self, id):
+        try:
+            db.child("personas").child(id).remove()
+            return {"status": 200, "message": "Persona eliminada correctamente"}
+        except Exception as error:
+            return {"status": 400, "message": "Error al eliminar la persona", "error": str(error)}

@@ -1,0 +1,13 @@
+<h1>Agregar Persona</h1>
+<form action="/insertar_persona" method="POST">
+    <div class="form-group">
+        <label for="nombre">Nombre</label>
+        <input type="text" class="form-control" id="nombre" name="nombre" required>
+    </div>
+    <div class="form-group">
+        <label for="telefono">Teléfono</label>
+        <input type="text" class="form-control" id="telefono" name="telefono" required>
+    </div>
+    <button type="submit" class="btn btn-primary">Agregar</button>
+    <a href="/lista_personas" class="btn btn-secondary">Cancelar</a>
+</form>
