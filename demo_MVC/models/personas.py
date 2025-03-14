@@ -20,7 +20,7 @@ class Personas:
             response = {
                 "status": 200,
                 "message": "Todo bien :3",
-                "personas": dict(personas.val())  # Se corrigió el error de sintaxis
+                "personas": dict(personas.val())
             }
             return response
         except Exception as error:
@@ -72,6 +72,25 @@ class Personas:
                 "message": "Error en el servidor"
             }
             return response
+
+    def actualizar_persona(self, id, nombre, telefono):
+        try:
+            data = {
+                "nombre": nombre,
+                "telefono": telefono
+            }
+            persona_ref = db.child("personas").child(id)
+            
+            # Verifica si la persona existe antes de actualizar
+            if not persona_ref.get().val():
+                return {"status": 404, "message": "Persona no encontrada"}
+
+            persona_ref.update(data)  # Actualiza la información
+            
+            return {"status": 200, "message": "Persona actualizada correctamente"}
+        except Exception as error:
+            return {"status": 400, "message": "Error al actualizar la persona", "error": str(error)}
+
 
 persona = Personas()
 print(f"{persona.lista_personas()}")
